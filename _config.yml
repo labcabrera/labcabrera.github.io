@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: user_display_error(beta)
-email: userdisplayerror@gmail.com
+email: lab.cabrera@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   De momento este blog no deja de ser una poc para cacharrear con jekyll. Quizá
   en algún momento me decida a postear algo. Java. Programación. Linux. Open Source.
