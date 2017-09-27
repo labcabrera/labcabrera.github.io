@@ -7,7 +7,7 @@ categories: jekyll update
 
 Este es un blog de ejemplo, aprovechando que un amiguete ha decidido (que ya era hora)
 instalarse por fin una [debian](https://wiki.debian.org/es/DebianStretch), y así compartirle una
-[lista básica](link:/linux/linux-survival-guide.html) de referencia, y así aprovecho para
+[lista básica](/linux/linux-survival-guide.html) de referencia, y así aprovecho para
 cacharrear un poco con [jekyll](https://github.com/jekyll/jekyll) y
 [GitHub Pages](https://pages.github.com/).
 
