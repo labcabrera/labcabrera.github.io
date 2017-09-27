@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>user_display_error(beta)</title>
+  <meta name="description" content="De momento este blog no deja de ser una poc para cacharrear con jekyll. Quizá en algún momento me decida a postear algo. Java. Programación. Linux. Open Sour...">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/linux/linux-survival-guide.html">
+  <link rel="alternate" type="application/rss+xml" title="user_display_error(beta)" href="/feed.xml">
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+    
+    
+    <a class="site-title" href="/">user_display_error(beta)</a>
+  
+    
+      <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          
+            
+            
+          
+            
+            
+            <a class="page-link" href="/about/">About</a>
+            
+          
+            
+            
+            <a class="page-link" href="/coding/">Coding</a>
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+            <a class="page-link" href="/linux/">Linux</a>
+            
+          
+            
+            
+            <a class="page-link" href="/photography/">Photography</a>
+            
+          
+            
+            
+          
+            
+            
+          
+        </div>
+      </nav>
+    
+  </div>
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+
+  <div class="post-content">
+    <div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#user-management">User management</a>
+<ul class="sectlevel2">
+<li><a href="#users">Users</a></li>
+<li><a href="#groups">Groups</a></li>
+<li><a href="#set-a-memory-quote-per-user">Set a memory quote per user</a></li>
+</ul>
+</li>
+<li><a href="#file-system">File system</a>
+<ul class="sectlevel2">
+<li><a href="#permissions">Permissions</a></li>
+<li><a href="#basic-operations">Basic operations</a></li>
+<li><a href="#file-search">File search</a></li>
+<li><a href="#compress-and-extract-files">Compress and extract files</a></li>
+<li><a href="#management">Management</a></li>
+</ul>
+</li>
+<li><a href="#process-management">Process management</a>
+<ul class="sectlevel2">
+<li><a href="#remove-existing-service">Remove existing service</a></li>
+</ul>
+</li>
+<li><a href="#package-and-distribution-management">Package and distribution management</a></li>
+<li><a href="#networking">Networking</a>
+<ul class="sectlevel2">
+<li><a href="#nmap">nmap</a></li>
+<li><a href="#configure-proxy">Configure proxy</a></li>
+</ul>
+</li>
+<li><a href="#utilities-and-apps">Utilities and apps</a>
+<ul class="sectlevel2">
+<li><a href="#general">General</a></li>
+<li><a href="#git">git</a></li>
+<li><a href="#docker">docker</a></li>
+<li><a href="#mysql">mysql</a></li>
+<li><a href="#vi">vi</a></li>
+<li><a href="#configure-defaults-applications">Configure defaults applications</a></li>
+<li><a href="#ssh-login-without-password-prompt">SSH login without password prompt</a></li>
+<li><a href="#postgresql">PostgreSQL</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="user-management">User management</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="users">Users</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display all</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cut -d: -f1 /etc/passwd</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>useradd -G ${g01,g02,g03&#8230;&#8203;} ${user}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Change password</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>passwd ${user}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display user groups</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id ${username}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add to group</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>usermod -a -G ${group} ${user}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logged Users</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>w</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="groups">Groups</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>groups</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display all</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cut -d: -f1 /etc/group</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create group</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>groupadd ${group}</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="set-a-memory-quote-per-user">Set a memory quote per user</h3>
+<div class="listingblock">
+<div class="title">/etc/security/limits.conf</div>
+<div class="content">
+<pre>${username}          hard    as              6500000</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="file-system">File system</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="permissions">Permissions</h3>
+<div class="literalblock">
+<div class="content">
+<pre>chmod (-R) 400 ${resource}</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 50%;">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Octal</th>
+<th class="tableblock halign-left valign-top">Binary</th>
+<th class="tableblock halign-left valign-top">File mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>000</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>---</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>001</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--x</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>010</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-w-</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>011</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-wx</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>4</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>100</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>r--</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>5</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>101</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>r-x</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>6</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>110</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>rw-</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>7</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>111</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>rwx</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Alternative usage:
+    chmod (+|-) (w|r|x) ${resource}</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="basic-operations">Basic operations</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Change file owner</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>chown (-R) user:group ${resource}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Symbolic link creation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ln -s ${resource} ${link}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Folder size</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>du -sh ${folder}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text replace</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sed -i 's/xxx/yyy/g' *.txt</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">File system disk space</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>df -h</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">File monitoring</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tail -f ${file}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mount /dev/{sdax} /home/user/folder</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Umount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>umount /home/user/folder</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mount SSH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sshfs user@host:/home/user /mnt/folder</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="file-search">File search</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Find by name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find ${basePath} -name ${filename}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Find by name and execute action</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find ${basePath} -name ${filename} -exec rm -r {} +</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Find by content (grep)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grep -R ${keyword} ${basePath}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Find by content (find)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find ${basePath} -name ${filename} -exec grep ${keyword} {} +</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Count occurrences</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grep -R ${keyword} ${basePath} | wc -l</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="compress-and-extract-files">Compress and extract files</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 37.5%;">
+<col style="width: 37.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Format</th>
+<th class="tableblock halign-left valign-top">Compress</th>
+<th class="tableblock halign-left valign-top">Extract</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gzip/bzip2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tar -cvzf ${target} ${source}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tar -xvzf ${source}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zip</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>zip ${target} ${source}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>unzip -qq ${source}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7z</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>7z a `${target} ${source}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>7z x ${source}</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="management">Management</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete old files</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find ${basePath} -mtime +{days} -exec rm {} +</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Find duplicates</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>fdupes ${folder}</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="process-management">Process management</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Process list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ps -fea (| grep ${expression})</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Memory usage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>free -m</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Process resources</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lsof -p ${processId}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Force release memory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sync &amp;&amp; sysctl -w vm.drop_caches=3</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disk transfer rate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sudo hdparm -t /dev/sda5</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="remove-existing-service">Remove existing service</h3>
+<div class="literalblock">
+<div class="content">
+<pre>update-rc.d -f ${servicename} remove</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="package-and-distribution-management">Package and distribution management</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Install package from deb archive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dpkg -i foo.deb</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List installed packages</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dpkg-query -l 'foo*'</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User manual search</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>apropos ${keyword}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Determine distro and kernel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>uname -a ; cat /proc/version</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Search program folder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>whereis ${programName}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RPM to DEB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>alien --to-dev filename.rpm</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="networking">Networking</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Network interfaces</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ip addr</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Route table</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ip route list</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNS configuration</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cat /etc/resolv.conf</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SSH file copy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>scp file user@host:/home/user/file</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SSH tunneling</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ssh -L 3307:localhost:3306  root@10.1.1.12 -N -f</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TCP Traceroute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tcptraceroute -i wlan1 -w1 {host}</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="nmap">nmap</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Port scan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nmap -p ${portinit}-${portEnd}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Silent port scan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nmap -sS ${host}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IP range scan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nmap -sP ${rango:=192.186.1.1-255}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OS detection</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nmap -O ${host}</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="configure-proxy">Configure proxy</h3>
+<div class="listingblock">
+<div class="content">
+<pre>#!/bin/bash
+# execute using ". ./set-proxy"
+export http_proxy="http://{user}:{password}@{host}:{port}" <b class="conum">(1)</b>
+export https_proxy=$http_proxy
+export HTTP_PROXY=$http_proxy
+export HTTPS_PROXY=$http_proxy</pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p><code>user:password</code> is not mandatory on anonymous proxy.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="utilities-and-apps">Utilities and apps</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="general">General</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON pretty print file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cat unformatted.json | python -m json.tool &gt; formatted.json</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON pretty print curl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>curl -s <a href="http://host/resource" class="bare">http://host/resource</a> | python -m json.tool</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Eclipse cleanup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find . \( -name ".settings" -or -name ".project" -or -name ".classpath" \) -exec rm -rI {} +</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="git">git</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Update</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>git fetch; git pull</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Local commit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>git commit (-a|${fileFilter}) -m "Comments"</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List branches</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>git branch -a</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create local branch</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>git checkout -b branchName</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Override local changes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>git fetch --all; git reset --hard origin/master</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Initialize local repo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>git init</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create patch</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>git diff &gt; name.patch</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Apply patch</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>git apply name.patch</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Export master</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>git archive master | gzip &gt; latest.tgz</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Determine URL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>git remote show origin</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Determine URL (broken ref)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>git config --get remote.origin.url</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="docker">docker</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stop container</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>docker stop ${containerId}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stop all containers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>docker stop $(docker ps -a -q)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display all images</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>docker images</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display running containers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>docker ps</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display all containers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>docker ps -a</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Docker compose start</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>docker-compose up</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open container bash console</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>docker exec -it ${containerName} bash</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Remove image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>docker rmi (-f) ${imageId}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Remove all containers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>docker rm $(docker ps -a -q)</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="mysql">mysql</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Execute SQL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-u root -proot --execute="show databases"</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Backup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mysqldump -u {user} -p{password} schemaName &gt; file.sql</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Restore / execute script</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mysqldump -u {user} -p{password} schemaName &lt; file.sql</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="vi">vi</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:q</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exit !save</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:q!</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exit and save</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:wq</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Undo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;esc&gt;+u</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete curred line</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dd</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Insert new line</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;ctrl&gt;+j</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Search</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/ {key}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Search backward</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>? {key}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Replace first</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:s/OLD/NEW</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Globally (all) on current line</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:s/OLD/NEW/g</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Between two lines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:#,#s/OLD/NEW/g</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Every ocurrence in file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:%s/OLD/NEW/g</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="configure-defaults-applications">Configure defaults applications</h3>
+<div class="listingblock">
+<div class="content">
+<pre>#!/bin/bash
+
+# Use this command to query media type:
+# xdg-mime query filetype ${file}
+
+DEFAULT_TEXT_EDITOR=code.desktop
+
+xdg-mime default firefox.desktop text/xml
+xdg-mime default ${DEFAULT_TEXT_EDITOR} text/plain
+xdg-mime default ${DEFAULT_TEXT_EDITOR} application/xml
+xdg-mime default ${DEFAULT_TEXT_EDITOR} application/json
+xdg-mime default ${DEFAULT_TEXT_EDITOR} text/x-java
+xdg-mime default ${DEFAULT_TEXT_EDITOR} application/x-shellscript
+xdg-mime default ${DEFAULT_TEXT_EDITOR} text/x-python
+xdg-mime default ${DEFAULT_TEXT_EDITOR} text/markdown
+
+echo "Default applications:"
+
+cat ~/.local/share/applications/mimeapps.list</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ssh-login-without-password-prompt">SSH login without password prompt</h3>
+<div class="listingblock">
+<div class="content">
+<pre>#!/usr/bin/expect
+spawn scp ${source} user@host:${target}
+expect "*password:"
+send "changeit\r"
+interact</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="postgresql">PostgreSQL</h3>
+<div class="listingblock">
+<div class="title">backup-restore-script.sh</div>
+<div class="content">
+<pre>#!/usr/bin/env bash
+
+echo "PostGree backup helper"
+
+DATABASE='performance'
+SCHEMA_NAME='public'
+SYS_USER='postgres'
+HOST='localhost'
+USER='performance'
+FILE='dump-performance-postgresql'
+
+read -p "Options: (C)reate; (R)estore: " OPTION
+
+if [ $OPTION = "C" ]
+then
+    echo "Creating backup"
+    rm $FILE
+    pg_dump $DATABASE -h $HOST -U $USER -W &gt; $FILE
+elif [ $OPTION = "R" ]
+then
+    echo "Restoring backup"
+    echo "DROP SCHEMA public CASCADE;"
+    psql $DATABASE -h $HOST -U $SYS_USER -c 'DROP SCHEMA public CASCADE;'
+    echo "CREATE SCHEMA public AUTHORIZATION performance;"
+    psql $DATABASE -h $HOST -U $SYS_USER -c 'CREATE SCHEMA public AUTHORIZATION performance;'
+    psql $DATABASE -h $HOST -U $USER -W &lt; $FILE
+    rm -r /KISS/performance/local
+else
+    echo "Invalid option"
+fi</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+  </div>
+
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">user_display_error(beta)</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              user_display_error(beta)
+            
+            </li>
+            
+            <li><a href="mailto:userdisplayerror@gmail.com">userdisplayerror@gmail.com</a></li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/labcabrera"><span class="icon icon--github"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">labcabrera</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/user_display_error"><span class="icon icon--twitter"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">user_display_error</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>De momento este blog no deja de ser una poc para cacharrear con jekyll. Quizá en algún momento me decida a postear algo. Java. Programación. Linux. Open Source. Fotografía.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
