@@ -2,6 +2,10 @@
 //layout: default
 //---
 
+EL FORMATO ESTA EN ASCIIDOC ASI QUE NO SE RENDERIZA CORRECTAMENTE COMO MARKDOWN
+
+REVISAR
+
 = GNU/Linux Survival Guide
 :data-uri:
 :toc:
