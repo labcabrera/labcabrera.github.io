@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-09-27T19:55:52+02:00</updated><id>http://localhost:4000/</id><title type="html">user_display_error(beta)</title><subtitle>De momento este blog no deja de ser una poc para cacharrear con jekyll. Quizá en algún momento me decida a postear algo. Java. Programación. Linux. Open Source. Fotografía.</subtitle><entry><title type="html">For the times they are a-changin</title><link href="http://localhost:4000/jekyll/update/2017/09/27/times-are-changing.html" rel="alternate" type="text/html" title="For the times they are a-changin" /><published>2017-09-27T00:01:01+02:00</published><updated>2017-09-27T00:01:01+02:00</updated><id>http://localhost:4000/jekyll/update/2017/09/27/times-are-changing</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2017/09/27/times-are-changing.html">&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Así lo cantaba &lt;a href=&quot;https://www.youtube.com/watch?v=e7qQ6_RV4VQ&quot;&gt;Bob Dylan&lt;/a&gt; hace varias
+décadas, y eso parece que está ocurriendo en Redmond desde
+que Satya Nadella sucedió al troglodita de Steve Ballmer como director ejecutivo de
+la compañia.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Durante muchos años he mantenido una relación bastante tensa con Windows. Como sucede
+en los matrimonios de conveniencia, nunca he podido huir completamente de él por dos motivos:
+DirectX y algunas limitaciones empresariales en las que no es tán sencillo instalar
+el SSOO como a uno le venga en gana.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Afortunadamente, en la última década cada vez son más los sitios en los que uno puede
+montarse su equipo como dios le de la gana, generalmente con arranque dual &lt;em&gt;por
+si acaso&lt;/em&gt; desaprovechando espacio en disco.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Aparte de algunos problemas con los &lt;em&gt;docx&lt;/em&gt; y las limitaciones de compatibilidad con
+libreoffice suelo llevar una vida bastante plena y satisfactoria con el pinguino para
+programar, y con windows para jugar (afortunadamente el porno es 100% complaint en todas las
+plataformas y no tengo que estar reiniciando).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;El caso es que últimamente me estoy encontrando cada vez con más proyectos de código abierto
+de los chicos de Microsoft, algo que hace una década podía parecer impensable. Entonces ellos
+eran los interesados en torpedear muchos proyectos open source que comenzaban a hacerles sombra
+en diversos ámbitos.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Hace unos meses estuve revisando las librerías de
+&lt;a href=&quot;https://github.com/AzureAD/azure-activedirectory-library-for-java&quot;&gt;adal&lt;/a&gt;
+para la integración de aplicaciones java con
+&lt;a href=&quot;https://msdn.microsoft.com/en-us/library/bb897402.aspx&quot;&gt;ADFS&lt;/a&gt;), y si bien el código dejaba un
+tanto que desear (imagino que los conectores de &lt;em&gt;C#&lt;/em&gt; si que estarán mejor montados), es, &lt;strong&gt;al menos,
+una declaración de intenciones&lt;/strong&gt;.
+Curiosamente esta librería alojada en github no tenía por ningún lado el tipo de licencia bajo
+la cual se distribuía lo que es bastante sorprendente en una empresa con un ejercito de
+abogados acostumbrados a llevar a los tribunales a la competencia.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;strong&gt;En cambio le he dado una oportunidad a la versión de
+&lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt;&lt;/strong&gt; para linux y me
+está pareciendo un editor de texto bastante competente que nada tiene que desmerecer al
+resto de alternativas.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Desde hace años llevo probados decenas de editores y nunca he estado completamente satisfecho
+con ninguno. &lt;strong&gt;Parece complicado balancear correctamente sencillez y funcionalidad&lt;/strong&gt;: no quiero
+un &lt;em&gt;notepad.exe&lt;/em&gt;, pero tampoco quiero un IDE entero para tocar un fichero plano.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;strong&gt;Atom es el que he venido utilizando en estos últimos tiempos&lt;/strong&gt;, y aparte de la cantidad de
+recursos que consume no tengo apenas ninguna queja con él. &lt;em&gt;Gedit&lt;/em&gt; (bastante espartano), &lt;em&gt;nano&lt;/em&gt;, &lt;em&gt;lime&lt;/em&gt;,
+&lt;em&gt;gvim&lt;/em&gt; (me cuesta pensar en modo vi con una aplicación de escritorio), &lt;em&gt;geany&lt;/em&gt;, &lt;em&gt;leaf pad&lt;/em&gt;,
+&lt;em&gt;bluefish&lt;/em&gt; (más para gente que toca frontends) y otros tantos que he acabado desinstalando.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;El hermano mayor de &lt;em&gt;code&lt;/em&gt; en su momento me pareció una patata de entorno: lentísimo, con mil hooks que
+ralentizaban todo el SSOO y monolítico, ¡todo eso sin tener en cuenta que es para .NET, con auténticas
+desperdicios como el IIS!. Desde casi una década que no he probado ninguna versión
+posterior y no sé si a día de hoy habrán mejorado en ese aspecto.&lt;/p&gt;
+&lt;/div&gt;</content><author><name></name></author><summary type="html">Así lo cantaba Bob Dylan hace varias décadas, y eso parece que está ocurriendo en Redmond desde que Satya Nadella sucedió al troglodita de Steve Ballmer como director ejecutivo de la compañia.</summary></entry><entry><title type="html">Comenzamos</title><link href="http://localhost:4000/jekyll/update/2017/09/26/comenzamos.html" rel="alternate" type="text/html" title="Comenzamos" /><published>2017-09-26T18:33:22+02:00</published><updated>2017-09-26T18:33:22+02:00</updated><id>http://localhost:4000/jekyll/update/2017/09/26/comenzamos</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2017/09/26/comenzamos.html">&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Este es un blog de ejemplo, aprovechando que un amiguete ha decidido (que ya era hora)
+instalarse por fin una &lt;a href=&quot;https://wiki.debian.org/es/DebianStretch&quot;&gt;debian&lt;/a&gt;, y así compartirle una
+&lt;a href=&quot;/linux/linux-survival-guide.html&quot;&gt;lista básica&lt;/a&gt; de referencia, y así aprovecho para
+cacharrear un poco con &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;jekyll&lt;/a&gt; y
+&lt;a href=&quot;https://pages.github.com/&quot;&gt;github pages&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;La guía es poca cosa, de hecho hay mil mejores en internet, en cambio como es mía ya la tengo
+indexada en el coco y alguna vez me suele ser útil (acostumbraba a tenerla en google drive, al que
+ahora desde el trabajo no puedo acceder, ya saben, medidas de seguridad del siglo XX).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Por lo demás no sé si subiré algún contenido cuando termine de trastear con esto.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Un saludo&lt;/p&gt;
+&lt;/div&gt;</content><author><name></name></author><summary type="html">Este es un blog de ejemplo, aprovechando que un amiguete ha decidido (que ya era hora) instalarse por fin una debian, y así compartirle una lista básica de referencia, y así aprovecho para cacharrear un poco con jekyll y github pages.</summary></entry></feed>
