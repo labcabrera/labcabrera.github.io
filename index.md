@@ -4,5 +4,3 @@
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: home
 ---
-
-Haciendo pruebas con jekyll y github pages ;)
