@@ -1,42 +1,60 @@
-# GNU/Linux Survival Guide
+//---
+//layout: default
+//---
 
-## User management
+= GNU/Linux Survival Guide
+:data-uri:
+:toc:
+:toclevels: 3
 
-### Users
+[[user-management]]
+== User management
 
-|Display all            | `cut -d: -f1 /etc/passwd`                 |
-|Create                 | `useradd -G ${g01,g02,g03...} ${user}`    |
-|Change password        | `passwd ${user}`                          |
-|Display user groups    | `id ${username}`							|
-|Add to group           | `usermod -a -G ${group} ${user}`			|
-|Logged Users           | `w`                           			|
+=== Users
 
-### Groups
+[cols="1,3"]
+|===
+|Display all            | `cut -d: -f1 /etc/passwd`
+|Create                 | `useradd -G ${g01,g02,g03...} ${user}`
+|Change password        | `passwd ${user}`
+|Display user groups    | `id ${username}`
+|Add to group           | `usermod -a -G ${group} ${user}`
+|Logged Users           | `w`
+|===
 
-|List                   | `groups`						|
-|Display all            | `cut -d: -f1 /etc/group`		|
-|Create group           | `groupadd ${group}`			|
+=== Groups
 
-### Set a memory quote per user
+[cols="1,3"]
+|===
+|List                   | `groups`
+|Display all            | `cut -d: -f1 /etc/group`
+|Create group           | `groupadd ${group}`
+|===
+
+=== Set a memory quote per user
 
 ./etc/security/limits.conf
-```
+----
 ${username}          hard    as              6500000
-```
-## File system
+----
 
-### Permissions
+[[file-system]]
+== File system
+
+=== Permissions
     chmod (-R) 400 ${resource}
 
-|Octal    | Binary   | File mode |
-|`0`      | `000`    | `---`|
-|`1`      | `001`    | `--x`|
-|`2`      | `010`    | `-w-`|
-|`3`      | `011`    | `-wx`|
-|`4`      | `100`    | `r--`|
-|`5`      | `101`    | `r-x`|
-|`6`      | `110`    | `rw-`|
-|`7`      | `111`    | `rwx`|
+[width="50%", options="header"]
+|===
+|Octal    | Binary   | File mode
+|`0`      | `000`    | `---`
+|`1`      | `001`    | `--x`
+|`2`      | `010`    | `-w-`
+|`3`      | `011`    | `-wx`
+|`4`      | `100`    | `r--`
+|`5`      | `101`    | `r-x`
+|`6`      | `110`    | `rw-`
+|`7`      | `111`    | `rwx`
 |===
 
 Alternative usage:
