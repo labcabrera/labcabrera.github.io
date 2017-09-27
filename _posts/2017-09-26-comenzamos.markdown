@@ -9,7 +9,7 @@ Este es un blog de ejemplo, aprovechando que un amiguete ha decidido (que ya era
 instalarse por fin una [debian](https://wiki.debian.org/es/DebianStretch), y así compartirle una
 [lista básica](link:/linux/linux-survival-guide.html) de referencia, y así aprovecho para
 cacharrear un poco con [jekyll](https://github.com/jekyll/jekyll) y
-[GitHub Pages]https://pages.github.com/.
+[GitHub Pages](https://pages.github.com/).
 
 La guía es poca cosa, de hecho hay mil mejores en internet, en cambio como es mía ya la tengo
 indexada en el coco y alguna vez me suele ser útil (acostumbraba a tenerla en google drive, al que
