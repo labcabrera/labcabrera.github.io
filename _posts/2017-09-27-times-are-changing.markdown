@@ -6,7 +6,7 @@ categories: jekyll update
 ---
 
 
-Así lo cantaba https://www.youtube.com/watch?v=e7qQ6_RV4VQ[Bob Dylan] hace varias
+Así lo cantaba [Bob Dylan](https://www.youtube.com/watch?v=e7qQ6_RV4VQ) hace varias
 décadas, y eso parece que está ocurriendo en Redmond desde
 que Satya Nadella sucedió al troglodita de Steve Ballmer como director ejecutivo de
 la compañia.
@@ -20,7 +20,7 @@ Afortunadamente, en la última década cada vez son más los sitios en los que u
 montarse su equipo como dios le de la gana, generalmente con arranque dual _por
 si acaso_ desaprovechando espacio en disco.
 
-Aparte de algunos problemas con los _docx_ y las limitaciones de compatibilidad con
+Aparte de algunos problemas con los __docx__ y las limitaciones de compatibilidad con
 libreoffice suelo llevar una vida bastante plena y satisfactoria con el pinguino para
 programar, y con windows para jugar (afortunadamente el porno es 100% complaint en todas las
 plataformas y no tengo que estar reiniciando).
@@ -31,17 +31,17 @@ eran los interesados en torpedear muchos proyectos open source que comenzaban a 
 en diversos ámbitos.
 
 Hace unos meses estuve revisando las librerías de
-https://github.com/AzureAD/azure-activedirectory-library-for-java[adal]
+[adal](https://github.com/AzureAD/azure-activedirectory-library-for-java)
 para la integración de aplicaciones java con 
-https://msdn.microsoft.com/en-us/library/bb897402.aspx[ADFS]), y si bien el código dejaba un
+[ADFS](https://msdn.microsoft.com/en-us/library/bb897402.aspx), y si bien el código dejaba un
 tanto que desear (imagino que los conectores de _C#_ si que estarán mejor montados), es, *al menos,
 una declaración de intenciones*.
 Curiosamente esta librería alojada en github no tenía por ningún lado el tipo de licencia bajo
 la cual se distribuía lo que es bastante sorprendente en una empresa con un ejercito de
 abogados acostumbrados a llevar a los tribunales a la competencia.
 
-*En cambio le he dado una oportunidad a la versión de
-https://code.visualstudio.com/[Visual Studio Code]* para linux y me
+**En cambio le he dado una oportunidad a la versión de
+[Visual Studio Code](https://code.visualstudio.com/)** para linux y me
 está pareciendo un editor de texto bastante competente que nada tiene que desmerecer al
 resto de alternativas.
 
