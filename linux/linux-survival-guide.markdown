@@ -6,8 +6,7 @@
 [[user-management]]
 ## User management
 
-=== Users
-
+### Users
 
 |Display all            | `cut -d: -f1 /etc/passwd`                 |
 |Create                 | `useradd -G ${g01,g02,g03...} ${user}`    |
@@ -16,40 +15,32 @@
 |Add to group           | `usermod -a -G ${group} ${user}`			|
 |Logged Users           | `w`                           			|
 
+### Groups
 
-=== Groups
+|List                   | `groups`						|
+|Display all            | `cut -d: -f1 /etc/group`		|
+|Create group           | `groupadd ${group}`			|
 
-[cols="1,3"]
-|===
-|List                   | `groups`
-|Display all            | `cut -d: -f1 /etc/group`
-|Create group           | `groupadd ${group}`
-|===
-
-=== Set a memory quote per user
+### Set a memory quote per user
 
 ./etc/security/limits.conf
-----
+```
 ${username}          hard    as              6500000
-----
+```
+## File system
 
-[[file-system]]
-== File system
-
-=== Permissions
+### Permissions
     chmod (-R) 400 ${resource}
 
-[width="50%", options="header"]
-|===
-|Octal    | Binary   | File mode
-|`0`      | `000`    | `---`
-|`1`      | `001`    | `--x`
-|`2`      | `010`    | `-w-`
-|`3`      | `011`    | `-wx`
-|`4`      | `100`    | `r--`
-|`5`      | `101`    | `r-x`
-|`6`      | `110`    | `rw-`
-|`7`      | `111`    | `rwx`
+|Octal    | Binary   | File mode |
+|`0`      | `000`    | `---`|
+|`1`      | `001`    | `--x`|
+|`2`      | `010`    | `-w-`|
+|`3`      | `011`    | `-wx`|
+|`4`      | `100`    | `r--`|
+|`5`      | `101`    | `r-x`|
+|`6`      | `110`    | `rw-`|
+|`7`      | `111`    | `rwx`|
 |===
 
 Alternative usage:
