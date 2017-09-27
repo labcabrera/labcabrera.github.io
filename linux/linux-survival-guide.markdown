@@ -1,9 +1,5 @@
 # GNU/Linux Survival Guide
-:data-uri:
-:toc:
-:toclevels: 3
 
-[[user-management]]
 ## User management
 
 ### Users
