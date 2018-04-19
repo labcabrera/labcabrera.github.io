@@ -1,0 +1,45 @@
+= Título
+
+== Subtítulo
+
+Bla bla *bla* bla link:https://google.es[google] bla _bla_ bla..
+
+== Resumen
+
+Lorem ipsum:
+
+* <<myTag, Lorem ipsum>>.
+* <<anotherTag, Another loren ipsum>>.
+
+== [[myTag]] Loren ipsum
+
+En primer lugar definiremos el `WebSecurityConfigurerAdapter`. Dado el gran número de beans necesarios para la configuración del módulo hemos extraído la definición de los beans a la clase `SamlWebSecurityConfigurerAdapter`.
+
+== [[anotherTag]] Another loren ipsum
+
+
+[source,java]
+----
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(securedEnabled = true)
+public class WebSecurityConfig extends SamlWebSecurityConfigurerAdapter {
+
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		...
+	}
+
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.authenticationProvider(samlAuthenticationProvider());
+	}
+}
+----
+
+== Enlaces
+
+* link:https://projects.spring.io/spring-security[Spring Security]
+* link:http://docs.spring.io/spring-security-saml/docs/1.0.x/reference/html/[Spring Security SAML]
+* link:https://github.com/spring-projects/spring-security-saml/tree/master/sample[Ejemplo oficial]
+* link:http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-tech-overview-2.0.html[Especificación SAML 2.0]
